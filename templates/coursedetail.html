@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+ <!-- Page breadcrumb -->
+ <section id="mu-page-breadcrumb">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-page-breadcrumb-area">
+           <h2>Course Detail</h2>
+           <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}">Home</a></li>            
+            <li class="active">Course Detail</li>
+          </ol>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End breadcrumb -->
+ <section id="mu-course-content">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-course-content-area">
+            <div class="row">
+              <div class="col-md-9">
+                <!-- start course content container -->
+                <div class="mu-course-container mu-course-details">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="mu-latest-course-single">
+                        <figure class="mu-latest-course-img">
+                          <a href="#"><img src="{{course.image.url}}" alt="img"></a>
+                        </figure>
+                        <div class="mu-latest-course-single-content">
+                          <h3><a href="#">{{course.name}}</a></h3>
+                          <h4>Course Information</h4>
+                          <ul>
+                            <li> <span>Course Price:</span> <span>Ksh{{course.fee|intcomma}}/- Per Term</span></li>
+                            <li> <span>Course School:</span> <span>{{course.category.name}}</span></li>
+                            <li> <span>Total Students:</span> <span>{{course.students}}</span></li>
+                            <li> <span>Course Duration:</span> <span>{{course.duration}}</span></li>
+                            <li> <span>Entry Requirement:</span> <span>{{course.entry_requirements}}</span></li>
+                            <li> <span>Course Exam Body:</span> <span>{{course.exam_body}}</span></li>
+                            <li> <span>Other Requirements:</span> <span> {{course.other_requirements}}</span></li>
+                          </ul>
+                          <h4>Description</h4>
+                          <blockquote>
+                            <p>{{course.description}}</p>
+                          </blockquote>
+                        </div>
+                      </div> 
+                    </div>                                   
+                  </div>
+                </div>
+                <!-- end course content container -->
+              </div>
+              <div class="col-md-3">
+                <!-- start sidebar -->
+                <aside class="mu-sidebar">
+                  <!-- start single sidebar -->
+                  <div class="mu-single-sidebar">
+                    <h3>Academics</h3>
+                    <ul class="mu-sidebar-catg">
+                      {% for category in categories %}
+                      <li><a href="#">{{category.name}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  <!-- end single sidebar -->
+                  <!-- start single sidebar -->
+                  <div class="mu-single-sidebar">
+                    <h3>Popular Courses</h3>
+                    <div class="mu-sidebar-popular-courses">
+                      {% for course in popular %}
+                      <div class="media">
+                        <div class="media-left">
+                          <a href="{% url 'coursedetail' course.id %}">
+                           {% if course.image %}
+                            <img class="media-object" src="{{course.image.url}}" alt="img">
+                           {% endif %}
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <h4 class="media-heading"><a href="{% url 'coursedetail' course.id %}">{{course.name}}</a></h4>                      
+                          <span class="popular-course-price">Ksh{{course.fee|intcomma}}/- Per Term</span>
+                        </div>
+                      </div>
+                      {% endfor %}
+                      
+                    </div>
+                  </div>
+                  <!-- end single sidebar -->
+                  
+                  
+                </aside>
+                <!-- / end sidebar -->
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+{% endblock %}

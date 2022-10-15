@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+ <!-- Page breadcrumb -->
+ <section id="mu-page-breadcrumb">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-page-breadcrumb-area">
+           <h2>Edit Profile</h2>
+           <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>            
+            <li class="active">Edit Profile</li>
+          </ol>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End breadcrumb -->
+ <section id="mu-course-content">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-course-content-area">
+            <div class="row">
+              <div class="col-md-3">
+              </div>
+              <div class="col-md-6">        
+                <!-- start respond form -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div>
+                      <h3 class="reply-title">Edit Profile:</h3><hr>
+                      {% for message in messages %}
+                      <p class="text-danger">Error: {{message}}</p>
+                      {% endfor %}
+                      <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <p class="form-submit">
+                          <input type="submit" value="Update Profile" class="mu-post-btn" name="submit">
+                        </p>        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- end respond form -->
+              </div> 
+              <div class="col-md-3">
+              </div>  
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+ <!-- Page breadcrumb -->
+ <section id="mu-page-breadcrumb">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mu-page-breadcrumb-area">
+            <h2>Our Courses</h2>
+            <ol class="breadcrumb">
+             <li><a href="{% url 'home' %}">Home</a></li>            
+             <li class="active">Courses</li>
+           </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End breadcrumb -->
+  <section id="mu-course-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mu-course-content-area">
+             <div class="row">
+               <div class="col-md-9">
+                 <!-- start course content container -->
+                 <div class="mu-course-container">
+                   <div class="row">
+                   {% for course in courses %}                 
+                   <div class="col-md-6 col-sm-6">
+                     <div class="mu-latest-course-single">
+                       <figure class="mu-latest-course-img">
+                        {% if course.image %}
+                         <a href="{% url 'coursedetail' course.id %}"><img src="{{course.image.url}}" style="width: 406px; height: 200px; object-fit: cover;" alt="img"></a>
+                        {% endif %}
+                         <figcaption class="mu-latest-course-imgcaption">
+                           <a href="{% url 'coursedetail' course.id %}">{{course.name}} </a>
+                           
+                         </figcaption>
+                         
+                       </figure>
+                       
+                       <div class="mu-latest-course-single-content">
+                        
+                         <p>{{course.description|truncatewords:20}}</p>
+                         <div class="mu-latest-course-single-contbottom">
+                           <a class="mu-course-details" href="{% url 'coursedetail' course.id %}">Details</a>
+                           <span class="mu-course-price" href="#">Ksh{{course.fee|intcomma}}/- Per Term</span>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   {% endfor %}
+                   </div>
+                 </div>
+                 <!-- end course content container -->
+                 
+                 <!-- start course pagination -->
+                 <div class="mu-pagination">
+                  <nav>
+                    <ul class="pagination">
+                      {% if courses.has_previous %}
+                      <li>
+                        <a href="?page={{ courses.previous_page_number }}" aria-label="Previous">
+                          <span class="fa fa-angle-left"></span> Prev 
+                        </a>
+                      </li>
+                      {% else %}
+                      <li>
+                        <a href="#" aria-label="Previous">
+                          <span class="fa fa-angle-left"></span> Prev 
+                        </a>
+                      </li>
+                      {% endif %}
+
+                      {% for i in courses.paginator.page_range %}
+                      {% if i == courses.number %}
+                      <li class="active"><a href="#">{{i}}</a></li>
+                      {% else %}
+                      <li><a href="?page={{i}}">{{i}}</a></li>
+                      {% endif %}
+                      {% endfor %}
+                      
+                      {% if courses.has_next %}
+                      <li>
+                        <a href="?page={{ courses.next_page_number }}" aria-label="Next">
+                         Next <span class="fa fa-angle-right"></span>
+                        </a>
+                      </li>
+                      {% else %}
+                      <li>
+                        <a href="#" aria-label="Next">
+                         Next <span class="fa fa-angle-right"></span>
+                        </a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                  </nav>
+                </div>
+                <!-- end course pagination -->
+
+
+               </div>
+               <div class="col-md-3">
+                 <!-- start sidebar -->
+                 <aside class="mu-sidebar">
+                   <!-- start single sidebar -->
+                   <div class="mu-single-sidebar">
+                     <h3>Academics</h3>
+                     <ul class="mu-sidebar-catg">
+                       {% for category in categories %}
+                       <li><a href="#">{{category.name}}</a></li>
+                       {% endfor %}
+                     </ul>
+                   </div>
+                   <!-- end single sidebar -->
+                   <!-- start single sidebar -->
+                   <div class="mu-single-sidebar">
+                     <h3>Popular Courses</h3>
+                     <div class="mu-sidebar-popular-courses">
+                       {% for course in popular %}
+                       <div class="media">
+                         <div class="media-left">
+                           <a href="{% url 'coursedetail' course.id %}">
+                            {% if course.image %}
+                             <img class="media-object" src="{{course.image.url}}" alt="img">
+                            {% endif %}
+                           </a>
+                         </div>
+                         <div class="media-body">
+                           <h4 class="media-heading"><a href="{% url 'coursedetail' course.id %}">{{course.name}}</a></h4>                      
+                           <span class="popular-course-price">Ksh{{course.fee|intcomma}}/- Per Term</span>
+                         </div>
+                       </div>
+                       {% endfor %}
+                       
+                     </div>
+                   </div>
+                   <!-- end single sidebar -->
+                   
+                   
+                 </aside>
+                 <!-- / end sidebar -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+
+{% endblock %}
