@@ -114,7 +114,7 @@
                      <h3>Academics</h3>
                      <ul class="mu-sidebar-catg">
                        {% for category in categories %}
-                       <li><a href="#">{{category.name}}</a></li>
+                       <li><a href="{% url 'coursecategory' category.id %}">{{category.name}}</a></li>
                        {% endfor %}
                      </ul>
                    </div>

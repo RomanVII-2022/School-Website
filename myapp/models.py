@@ -28,5 +28,50 @@ class Course(models.Model):
         return self.name
 
 
+class ImageCategory(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class Image(models.Model):
+    category = models.ForeignKey(ImageCategory, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+
+
+    def __str__(self):
+        return self.name
+
+
+class BlogCategory(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class Blog(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='blog/')
+    category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.title
+
+
+
 
 

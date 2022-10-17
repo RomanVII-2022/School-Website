@@ -18,7 +18,6 @@
         <span></span>
         <h2>We Will Help You To Learn</h2>
         <p>“Education is the passport to the future, for tomorrow belongs to those who prepare for it today.”</p>
-        <a href="#" class="mu-read-more-btn">Read More</a>
       </div>
     </div>
     <!-- Start single slider item -->
@@ -34,7 +33,6 @@
         <span></span>
         <h2>Get Closer To Your Dreams</h2>
         <p>“Intellectual growth should commence at birth and cease only at death.“</p>
-        <a href="#" class="mu-read-more-btn">Read More</a>
       </div>
     </div>
     <!-- Start single slider item -->
@@ -50,7 +48,6 @@
         <span></span>
         <h2>Education For Everyone</h2>
         <p>“The whole purpose of education is to turn mirrors into windows” </p>
-        <a href="#" class="mu-read-more-btn">Read More</a>
       </div>
     </div>
     <!-- Start single slider item -->    
@@ -150,7 +147,6 @@
                     <span class="fa fa-book"></span>
                     <h4>Professional Courses</h4>
                     <p>We have invested in excellent learning facilities such as modern Computer Laboratories, Journalism studios, and Games-rooms</p>
-                    <a href="#">Read More</a>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -158,7 +154,6 @@
                     <span class="fa fa-users"></span>
                     <h4>Expert Teachers</h4>
                     <p>Our lecturers can identify the most important ways in which to represent the subject they teach.</p>
-                    <a href="#">Read More</a>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -166,7 +161,6 @@
                     <span class="fa fa-laptop"></span>
                     <h4>Online Learning</h4>
                     <p>From certificates, PhDs, impactful online language learning and everything in between, learning online has never been so easy!</p>
-                    <a href="#">Read More</a>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -174,7 +168,6 @@
                     <span class="fa fa-microphone"></span>
                     <h4>Audio Lessons</h4>
                     <p>You are in safe hands. We guarantee the best captioned and transcribed audio lessons in the region in all our campuses</p>
-                    <a href="#">Read More</a>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -182,7 +175,6 @@
                     <span class="fa fa-film"></span>
                     <h4>Video Lessons</h4>
                     <p>You are in safe hands. We guarantee the best captioned and transcribed video lessons in the region in all our campuses</p>
-                    <a href="#">Read More</a>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -190,7 +182,6 @@
                     <span class="fa fa-certificate"></span>
                     <h4>Professional Certificate</h4>
                     <p>Currently we offer authentic certificate & diploma courses in different faculties provided by the most qualified lectures in the region.</p>
-                    <a href="#">Read More</a>
                   </div>
                 </div>
               </div>
@@ -255,35 +246,18 @@
           <div class="mu-our-teacher-area">
             <!-- begain title -->
             <div class="mu-title">
-              <h2>Our Teachers</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, repudiandae, suscipit repellat minus molestiae ea.</p>
+              <h2>Our Staff</h2>
+              <p>The best lecturers that the university has to offer.</p>
             </div>
             <!-- end title -->
             <!-- begain our teacher content -->
             <div class="mu-our-teacher-content">
               <div class="row">
-                <div class="col-lg-3 col-md-3  col-sm-6">
-                  <div class="mu-our-teacher-single">
-                    <figure class="mu-our-teacher-img">
-                      <img src="{% static 'assets/img/teachers/tech-1.jpg' %}" alt="teacher img">
-                      <div class="mu-our-teacher-social">
-                        <a href="#"><span class="fa fa-facebook"></span></a>
-                        <a href="#"><span class="fa fa-twitter"></span></a>
-                        <a href="#"><span class="fa fa-linkedin"></span></a>
-                        <a href="#"><span class="fa fa-google-plus"></span></a>
-                      </div>
-                    </figure>                    
-                    <div class="mu-ourteacher-single-content">
-                      <h4>Brian Dean</h4>
-                      <span>Math Teacher</span>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
-                    </div>
-                  </div>
-                </div>
+                {% for lecturer in staff %}
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <div class="mu-our-teacher-single">
                     <figure class="mu-our-teacher-img">
-                      <img src="{% static 'assets/img/teachers/tech-2.jpg' %}" alt="teacher img">
+                      <img src="{{lecturer.profile_image.url}}" style="height: 170px; object-fit: cover;" alt="teacher img">
                       <div class="mu-our-teacher-social">
                         <a href="#"><span class="fa fa-facebook"></span></a>
                         <a href="#"><span class="fa fa-twitter"></span></a>
@@ -292,48 +266,14 @@
                       </div>
                     </figure>                    
                     <div class="mu-ourteacher-single-content">
-                      <h4>James Hein</h4>
-                      <span>Physics Teacher</span>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
+                      <h4>{{lecturer.first_name}} {{lecturer.last_name}}</h4>
+                      <span>{{lecturer.role}}</span>
+                      <p></p>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6">
-                  <div class="mu-our-teacher-single">
-                    <figure class="mu-our-teacher-img">
-                      <img src="{% static 'assets/img/teachers/tech-3.jpg' %}" alt="teacher img">
-                      <div class="mu-our-teacher-social">
-                        <a href="#"><span class="fa fa-facebook"></span></a>
-                        <a href="#"><span class="fa fa-twitter"></span></a>
-                        <a href="#"><span class="fa fa-linkedin"></span></a>
-                        <a href="#"><span class="fa fa-google-plus"></span></a>
-                      </div>
-                    </figure>                    
-                    <div class="mu-ourteacher-single-content">
-                      <h4>Rebeca Michel</h4>
-                      <span>English Teacher</span>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6">
-                  <div class="mu-our-teacher-single">
-                    <figure class="mu-our-teacher-img">
-                      <img src="{% static 'assets/img/teachers/tech-4.jpg' %}" alt="teacher img">
-                      <div class="mu-our-teacher-social">
-                        <a href="#"><span class="fa fa-facebook"></span></a>
-                        <a href="#"><span class="fa fa-twitter"></span></a>
-                        <a href="#"><span class="fa fa-linkedin"></span></a>
-                        <a href="#"><span class="fa fa-google-plus"></span></a>
-                      </div>
-                    </figure>                    
-                    <div class="mu-ourteacher-single-content">
-                      <h4>John Doe</h4>
-                      <span>Biology Teacher</span>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
-                    </div>
-                  </div>
-                </div>
+                {% endfor %}
+                
               </div>
             </div> 
             <!-- End our teacher content -->           
@@ -432,69 +372,33 @@
             <!-- start title -->
             <div class="mu-title">
               <h2>From Blog</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum vitae quae vero ut natus. Dolore!</p>
+              <p>Everything you need to know about education, new technologies, and the latest in business</p>
             </div>
             <!-- end title -->  
             <!-- start from blog content   -->
             <div class="mu-from-blog-content">
               <div class="row">
+                {% for blog in blogs %}
                 <div class="col-md-4 col-sm-4">
                   <article class="mu-blog-single-item">
                     <figure class="mu-blog-single-img">
-                      <a href="#"><img src="{% static 'assets/img/blog/bl-1.jpg' %}" alt="img"></a>
+                      <a href="{% url 'blogdetail' blog.id %}"><img src="{{blog.image.url}}" alt="img"></a>
                       <figcaption class="mu-blog-caption">
-                        <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
+                        <h3><a href="{% url 'blogdetail' blog.id %}">{{blog.title}}</a></h3>
                       </figcaption>                      
                     </figure>
                     <div class="mu-blog-meta">
-                      <a href="#">By Admin</a>
-                      <a href="#">02 June 2016</a>
-                      <span><i class="fa fa-comments-o"></i>87</span>
+                      <a href="#">By {{blog.first_name}} {{blog.last_name}}</a>
+                      <a href="#">{{blog.created_at}}</a>
+                      <span><i class="fa fa-comments-o"></i></span>
                     </div>
                     <div class="mu-blog-description">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                      <a class="mu-read-more-btn" href="#">Read More</a>
+                      <p>{{blog.description|truncatewords:30}}</p>
+                      <a class="mu-read-more-btn" href="{% url 'blogdetail' blog.id %}">Read More</a>
                     </div>
                   </article>
                 </div>
-                <div class="col-md-4 col-sm-4">
-                  <article class="mu-blog-single-item">
-                    <figure class="mu-blog-single-img">
-                      <a href="#"><img src="{% static 'assets/img/blog/bl-2.jpg' %}" alt="img"></a>
-                      <figcaption class="mu-blog-caption">
-                        <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
-                      </figcaption>                      
-                    </figure>
-                    <div class="mu-blog-meta">
-                      <a href="#">By Admin</a>
-                      <a href="#">02 June 2016</a>
-                      <span><i class="fa fa-comments-o"></i>87</span>
-                    </div>
-                    <div class="mu-blog-description">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                      <a class="mu-read-more-btn" href="#">Read More</a>
-                    </div>
-                  </article>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                  <article class="mu-blog-single-item">
-                    <figure class="mu-blog-single-img">
-                      <a href="#"><img src="{% static 'assets/img/blog/bl-4.jpg' %}" alt="img"></a>
-                      <figcaption class="mu-blog-caption">
-                        <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
-                      </figcaption>                      
-                    </figure>
-                    <div class="mu-blog-meta">
-                      <a href="#">By Admin</a>
-                      <a href="#">02 June 2016</a>
-                      <span><i class="fa fa-comments-o"></i>87</span>
-                    </div>
-                    <div class="mu-blog-description">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                      <a class="mu-read-more-btn" href="#">Read More</a>
-                    </div>
-                  </article>
-                </div>
+                {% endfor %}
               </div>
             </div>     
             <!-- end from blog content   -->   

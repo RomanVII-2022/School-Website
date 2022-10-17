@@ -20,4 +20,11 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('our-courses', CourseView.as_view(), name='courses'),
     path('course-detail/<int:pk>', CourseDetailView.as_view(), name='coursedetail'),
+    path('gallery', ImageView.as_view(), name='gallery'),
+    path('contact', ContactView.as_view(), name='contact'),
+    path('blog', BlogView.as_view(), name='blog'),
+    path('blogdetail/<int:pk>', BlogDetailView.as_view(), name='blogdetail'),
+    path('blog-category/<int:pk>', BlogCategoryView.as_view(), name='blogcategory'),
+    path('course-category/<int:pk>', CourseCategoryView.as_view(), name="coursecategory"),
+    path('404', ErrorView.as_view(), name='404'),
 ]

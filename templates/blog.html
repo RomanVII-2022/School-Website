@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ <!-- Page breadcrumb -->
+ <section id="mu-page-breadcrumb">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-page-breadcrumb-area">
+           <h2>Blog Archive</h2>
+           <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}">Home</a></li>            
+            <li class="active">Blog Archive</li>
+          </ol>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End breadcrumb -->
+ <section id="mu-course-content">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-course-content-area">
+            <div class="row">
+              <div class="col-md-9">
+                <!-- start course content container -->
+                <div class="mu-course-container mu-blog-archive">
+                  <div class="row">                    
+                   {% for blog in object_list %} 
+                   <div class="col-md-6 col-sm-6">
+                      <article class="mu-blog-single-item">
+                        <figure class="mu-blog-single-img">
+                          <a href="{% url 'blogdetail' blog.id %}"><img src="{{blog.image.url}}" alt="img"></a>
+                          <figcaption class="mu-blog-caption">
+                            <h3><a href="{% url 'blogdetail' blog.id %}">{{blog.title}}</a></h3>
+                          </figcaption>                      
+                        </figure>
+                        <div class="mu-blog-meta">
+                          <a href="{% url 'blogdetail' blog.id %}">By {{blog.first_name}} {{blog.last_name}}</a>
+                          <a href="{% url 'blogdetail' blog.id %}">{{blog.created_at}}</a>
+                          <span><i class="fa fa-comments-o"></i></span>
+                        </div>
+                        <div class="mu-blog-description">
+                          <p>{{blog.description|truncatewords:30}}</p>
+                          <a class="mu-read-more-btn" href="{% url 'blogdetail' blog.id %}">Read More</a>
+                        </div>
+                      </article>
+                    </div>
+                    {% endfor %}    
+                  </div>
+                </div>
+                <!-- end course content container -->
+                
+              </div>
+              <div class="col-md-3">
+                <!-- start sidebar -->
+                <aside class="mu-sidebar">
+                  <!-- start single sidebar -->
+                  <div class="mu-single-sidebar">
+                    <h3>Categories</h3>
+                    <ul class="mu-sidebar-catg">
+                      {% for category in categories %}
+                      <li><a href="{% url 'blogcategory' category.id %}">{{category}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  <!-- end single sidebar -->
+                  <!-- start single sidebar -->
+                  <div class="mu-single-sidebar">
+                    <h3>Popular News</h3>
+                    <div class="mu-sidebar-popular-courses">
+                      {% for blog in popular %}
+                      <div class="media">
+                        <div class="media-left">
+                          <a href="{% url 'blogdetail' blog.id %}">
+                            <img class="media-object" src="{{blog.image.url}}" alt="img">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <h4 class="media-heading"><a href="{% url 'blogdetail' blog.id %}">{{blog.title}}</a></h4>                      
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <!-- end single sidebar -->
+                </aside>
+                <!-- / end sidebar -->
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+ {% endblock %}
