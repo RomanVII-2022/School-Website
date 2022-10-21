@@ -210,35 +210,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-                <a href="{% url 'backendhome' %}" class="nav-link active">
+                <a href="{% url 'backendhome' %}" {% if request.path == '/backend/admin-home' %} class="nav-link active" {% else %} class="nav-link" {% endif %}>
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Dashboard
                   </p>
                 </a>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item">
+            <a href="{% url 'adminusers' %}" {% if request.path == '/backend/admin-users' %} class="nav-link active" {% else %} class="nav-link" {% endif %}>
+              <i class="nav-icon fas fa-user"></i>
               <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
+                Users
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'admincourses' %}" {% if request.path == '/backend/admin-courses' %} class="nav-link active" {% else %} class="nav-link" {% endif %}>
+              <i class="nav-icon fas fa-graduation-cap"></i>
+              <p>
+                Courses
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'adminstaff' %}" {% if request.path == '/backend/admin-staff' %} class="nav-link active" {% else %} class="nav-link" {% endif %}>
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Staff
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'adminblogs' %}" {% if request.path == '/backend/admin-blogs' %} class="nav-link active" {% else %} class="nav-link" {% endif %}>
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Blogs
+              </p>
+            </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -255,6 +264,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- /.sidebar -->
   </aside>
+  {% for message in messages %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Success Message: </strong> {{message}}.
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 
   {% block content %}
 
@@ -305,8 +325,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="{% static 'dist/js/adminlte.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{% static 'dist/js/demo.js' %}"></script>
+<!--<script src="{% static 'dist/js/demo.js' %}"></script>-->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{% static 'dist/js/pages/dashboard.js' %}"></script>
+<!--<script src="{% static 'dist/js/pages/dashboard.js' %}"></script>-->
 </body>
 </html>
