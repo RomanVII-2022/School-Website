@@ -7,6 +7,7 @@ from .forms import *
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 # Create your views here.
 class BackendHomeView(TemplateView):
@@ -22,6 +23,10 @@ class BackendHomeView(TemplateView):
         context["staff"] = staff
         blogs = Blog.objects.all().count()
         context["blogs"] = blogs
+        p = Paginator(Course.objects.all(), 6)
+        page = self.request.GET.get('page')
+        courses_list = p.get_page(page)
+        context["courses_list"] = courses_list
         return context
     
 
